@@ -13,18 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.swing.JOptionPane;
 import modelo.crudPermisos;
 import modelo.permisoSG;
+import modulo_permisos.tipopermiso;
 
 
 
 @WebServlet(name = "ServletPermiso", urlPatterns = {"/ServletPermiso"})
 @MultipartConfig//servidor espera este tipo de formatos img
 public class ServletPermiso extends HttpServlet {
-        //VARS GLOBAL
-        int Id,documento;
-        String tipo, fecha_salida, fecha_ingreso,hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal,observacion_permiso_llegada,motivo,
-        estado, autoriza;
+    //VARS GLOBAL
+    int Id,documento;
+    String tipo, fecha_salida, fecha_ingreso,hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal,observacion_permiso_llegada,motivo,
+    estado, autoriza;
+    String semana;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,8 +55,10 @@ public class ServletPermiso extends HttpServlet {
         if(request.getParameter("btn-eliminar") != null){
          this.eliminarPermiso(request,response);
         }
-        
-        
+        //REDIRECCION TIPO DE PERMISO
+//        if(request.getParameter("select_tipo") != null){
+//         this.tipo_permiso(request,response);
+//        }
         
     }
 
@@ -103,7 +108,7 @@ public class ServletPermiso extends HttpServlet {
         PrintWriter out = response.getWriter();
                
         documento=Integer.parseInt(request.getParameter("f_numerodocumento"));
-        tipo=request.getParameter("f_tipo");
+        tipo=request.getParameter("tipoper");
         fecha_salida=request.getParameter("f_fechsal");
         fecha_ingreso=request.getParameter("f_fechingre");
         hora_Salida=request.getParameter("f_horasal");
@@ -140,6 +145,22 @@ public class ServletPermiso extends HttpServlet {
         crudPermisos crud = new crudPermisos();
         crud.guardar_permiso(setget);
         request.getRequestDispatcher("f_permiso.jsp").forward(request, response);
+        //TIPO DE PERMISO
+//        tipopermiso sem=new tipopermiso();
+//        String psemana = sem.metodo_semana(tipo);
+//        String pfsemana= sem.metodo_fsemana(tipo);
+        //condicional
+        if(tipo.equals(tipo)){
+            //entra metodo semana
+            tipopermiso sem=new tipopermiso();
+            sem.metodo_semana(tipo);
+        }else if(tipo.equals(tipo)){
+            //metodo fin de semana
+            tipopermiso sem=new tipopermiso();
+            sem.metodo_fsemana(tipo);
+        }
+        
+        
     }
     
     
@@ -152,7 +173,7 @@ public class ServletPermiso extends HttpServlet {
         
         Id=Integer.parseInt(request.getParameter("t_Id"));   
         documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
-        tipo=request.getParameter("t_tipo");
+        tipo=request.getParameter("tipoper");
         fecha_salida=request.getParameter("t_fechsal");
         fecha_ingreso=request.getParameter("t_fechingre");
         hora_Salida=request.getParameter("t_horasal");
@@ -201,7 +222,7 @@ public class ServletPermiso extends HttpServlet {
         
         Id=Integer.parseInt(request.getParameter("t_Id"));
         documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
-        tipo=request.getParameter("t_tipo");
+        tipo=request.getParameter("tipoper");
         fecha_salida=request.getParameter("t_fechsal");
         fecha_ingreso=request.getParameter("t_fechingre");
         hora_Salida=request.getParameter("t_horasal");
@@ -247,7 +268,31 @@ public class ServletPermiso extends HttpServlet {
     
     
     
-    
+        //TIPO DE PERMISO
+//        private void tipo_permiso(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        response.setContentType("text/html;charset=UTF-8");
+//        PrintWriter out = response.getWriter();
+//        
+//        String dato;
+//        dato=request.getParameter("select_tipo"); 
+//
+//        if(dato.equals("semana")){
+//
+//            semana sem = new semana();
+//            sem.metodo_semana(dato);
+//            JOptionPane.showMessageDialog(null, "entra metodo servlet permiso semana");
+//
+//        }
+//        else if(dato.equals("fsemana")){
+//
+//            semana sem = new semana();
+//            sem.metodo_fsemana(dato);
+//            JOptionPane.showMessageDialog(null, "entra metodo servlet permiso Fin de semana");
+//
+//        }
+// 
+//    }
     
     
     

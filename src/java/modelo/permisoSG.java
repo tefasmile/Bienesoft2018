@@ -189,6 +189,10 @@ public class permisoSG {
         this.per_evidenciaAdjunta = per_evidenciaAdjunta;
     }
     
+    //tipo permiso
+    public permisoSG(String per_tipo) {
+        this.per_tipo = per_tipo;
+    }
     
     
    
