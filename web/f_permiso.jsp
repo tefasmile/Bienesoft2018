@@ -1,6 +1,6 @@
 
+<%@page import="modelo.consultas"%>
 <%@page import="modelo.permisoSG"%>
-<%@page import="modulo_permisos.semana"%>
 <%@page import="modelo.aprendizSG"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,6 +17,14 @@
             <form action="ServletPermiso" enctype="multipart/form-data" method="post">
                 <td><input type="number" name="f_numerodocumento" placeholder="documento del aprendiz"></td>
                 <!--<td><input type="text" name="f_tipo" placeholder="tipo de permiso"></td>-->
+                <%
+                consultas con = new consultas();
+                HttpSession dato = request.getSession();
+                
+                String tipopermiso = (String) dato.getAttribute("tipoper");
+                
+                %>
+
                 <!--seleccion de permiso--->
                 <select name="tipoper">  
                     <option>Tipo de permiso</option>

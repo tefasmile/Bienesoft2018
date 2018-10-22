@@ -27,7 +27,7 @@ public class ServletPermiso extends HttpServlet {
     int Id,documento;
     String tipo, fecha_salida, fecha_ingreso,hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal,observacion_permiso_llegada,motivo,
     estado, autoriza;
-    String semana;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -55,10 +55,10 @@ public class ServletPermiso extends HttpServlet {
         if(request.getParameter("btn-eliminar") != null){
          this.eliminarPermiso(request,response);
         }
-        //REDIRECCION TIPO DE PERMISO
-//        if(request.getParameter("select_tipo") != null){
-//         this.tipo_permiso(request,response);
-//        }
+        //SELECCIONA TIPO DE PERMISO
+        if(request.getParameter("tipoper") != null){
+         this.tipo_permiso(request,response);
+        }
         
     }
 
@@ -145,20 +145,7 @@ public class ServletPermiso extends HttpServlet {
         crudPermisos crud = new crudPermisos();
         crud.guardar_permiso(setget);
         request.getRequestDispatcher("f_permiso.jsp").forward(request, response);
-        //TIPO DE PERMISO
-//        tipopermiso sem=new tipopermiso();
-//        String psemana = sem.metodo_semana(tipo);
-//        String pfsemana= sem.metodo_fsemana(tipo);
-        //condicional
-        if(tipo.equals(tipo)){
-            //entra metodo semana
-            tipopermiso sem=new tipopermiso();
-            sem.metodo_semana(tipo);
-        }else if(tipo.equals(tipo)){
-            //metodo fin de semana
-            tipopermiso sem=new tipopermiso();
-            sem.metodo_fsemana(tipo);
-        }
+
         
         
     }
@@ -269,30 +256,37 @@ public class ServletPermiso extends HttpServlet {
     
     
         //TIPO DE PERMISO
-//        private void tipo_permiso(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter out = response.getWriter();
-//        
-//        String dato;
-//        dato=request.getParameter("select_tipo"); 
-//
-//        if(dato.equals("semana")){
-//
-//            semana sem = new semana();
-//            sem.metodo_semana(dato);
-//            JOptionPane.showMessageDialog(null, "entra metodo servlet permiso semana");
-//
-//        }
-//        else if(dato.equals("fsemana")){
-//
-//            semana sem = new semana();
-//            sem.metodo_fsemana(dato);
-//            JOptionPane.showMessageDialog(null, "entra metodo servlet permiso Fin de semana");
-//
-//        }
-// 
-//    }
+        private void tipo_permiso(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        tipo=request.getParameter("tipoper");
+        //String dato;
+        //dato=request.getParameter("select_tipo"); 
+        
+        
+        //TIPO DE PERMISO
+        tipopermiso sem=new tipopermiso();
+        //String psemana, pfsemana;
+        //String psemana = sem.metodo_semana(tipo);
+        //String pfsemana= sem.metodo_fsemana(tipo);
+        
+        //condicional para ejecutar metodo selectivo de permiso
+        if(tipo.equals("semana")){
+            //entra metodo semana
+            sem.metodo_semana(tipo);
+        }else if(tipo.equals("fin de semana")){
+            //metodo fin de semana
+            sem.metodo_fsemana(tipo);
+        }else if(tipo.equals("emergencia")){
+            //metodo fin de semana
+            sem.metodo_emergencia(tipo);
+        }
+
+        
+ 
+    }
     
     
     
