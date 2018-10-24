@@ -1,0 +1,16 @@
+SMAP
+t_005fpermiso_jsp.java
+JSP
+*S JSP
+*F
++ 0 t_permiso.jsp
+t_permiso.jsp
+*L
+1,37:47
+38,8:85
+45,5:93
+50,12:98,3
+62,10:134
+72,2:145
+73,5:147
+*E

@@ -1,0 +1,16 @@
+SMAP
+t_005fpermiso_005faprendiz_jsp.java
+JSP
+*S JSP
+*F
++ 0 t_permiso_aprendiz.jsp
+t_permiso_aprendiz.jsp
+*L
+1,38:47
+39,8:86
+46,6:94
+52,12:100,3
+64,12:136
+76,2:149
+77,6:151
+*E

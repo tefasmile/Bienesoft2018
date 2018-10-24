@@ -195,7 +195,24 @@ public class permisoSG {
     }
     
     
-   
+    //PERMISO ID AUTORIZACION
+    public permisoSG(int per_ID) {
+        this.per_ID = per_ID;
+    }
+    
+    
+    //DATOS DE 4 TIPOS PARA SALIDA REAL Y ESTIPULADA APR
+    public permisoSG(String per_fecha_salida, String per_hora_Salida, String per_fecha_salidaReal, String per_hora_salidaReal) {
+        this.per_fecha_salida = per_fecha_salida;
+        this.per_hora_Salida = per_hora_Salida;
+        this.per_fecha_salidaReal = per_fecha_salidaReal;
+        this.per_hora_salidaReal = per_hora_salidaReal;
+    }
+    
+    
+    
+    //DATOS DE 4 TIPOS PARA INGRESO REAL Y ESTIPULADA APR
+    
 
    
     

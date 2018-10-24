@@ -6,16 +6,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.swing.JOptionPane;
+import modelo.consultas;
 import modelo.crudPermisos;
 import modelo.permisoSG;
+import modulo_permisos.Autorizacion;
 import modulo_permisos.tipopermiso;
 
 
@@ -56,8 +61,8 @@ public class ServletPermiso extends HttpServlet {
          this.eliminarPermiso(request,response);
         }
         //SELECCIONA TIPO DE PERMISO
-        if(request.getParameter("tipoper") != null){
-         this.tipo_permiso(request,response);
+        if(request.getParameter("btn-autorizado") != null){
+         this.permisoAutorizado(request,response);
         }
         
     }
@@ -255,40 +260,50 @@ public class ServletPermiso extends HttpServlet {
     
     
     
-        //TIPO DE PERMISO
-        private void tipo_permiso(HttpServletRequest request, HttpServletResponse response)
+        //AUTORIZACION DE SEGURIDAD
+        private void permisoAutorizado(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        tipo=request.getParameter("tipoper");
-        //String dato;
-        //dato=request.getParameter("select_tipo"); 
+        int id= Integer.parseInt(request.getParameter("t_Id"));
+        fecha_salida=request.getParameter("t_fechsal");
+        fecha_ingreso=request.getParameter("t_fechingre");
+        hora_Salida=request.getParameter("t_horasal");
+        hora_ingreso=request.getParameter("t_horaingre");
+        fecha_ingresoReal=request.getParameter("f_fireal");
+        hora_ingresoReal=request.getParameter("f_hireal");
+        fecha_salidaReal=request.getParameter("f_fsreal");
+        hora_salidaReal=request.getParameter("f_hsreal");
         
+        //Autorizacion de seguridad
+        //consulta ID
+        permisoSG setget = new permisoSG();
+        Autorizacion autorz=new Autorizacion();
+        ArrayList<permisoSG> permiso=new  ArrayList<>();//GUARDA ELEMENTOS 
+        permiso=autorz.consultaperID(setget);
+        setget = permiso.get(0);//MUESTRA ELEMENTOS
         
-        //TIPO DE PERMISO
-        tipopermiso sem=new tipopermiso();
-        //String psemana, pfsemana;
-        //String psemana = sem.metodo_semana(tipo);
-        //String pfsemana= sem.metodo_fsemana(tipo);
-        
-        //condicional para ejecutar metodo selectivo de permiso
-        if(tipo.equals("semana")){
-            //entra metodo semana
-            sem.metodo_semana(tipo);
-        }else if(tipo.equals("fin de semana")){
-            //metodo fin de semana
-            sem.metodo_fsemana(tipo);
-        }else if(tipo.equals("emergencia")){
-            //metodo fin de semana
-            sem.metodo_emergencia(tipo);
+        if( autorz.AutorizaSeguridad(setget.getPer_estado()) ){ //SI RETORNA TRUE (AUTORIZADO)
+            JOptionPane.showMessageDialog(null, "AUTORIZADO");
+            
+            //LLAMAR MÉTODO PARA DETERMINAR SI ES UN INGRESO O UNA SALIDA
+            //PERMISO ENTRADA y SALIDA
+            permisoSG pse = new permisoSG(fecha_ingresoReal, hora_ingresoReal, fecha_salidaReal, hora_salidaReal);
+            ArrayList<permisoSG> persalent=new  ArrayList<>();
+            persalent=autorz.PermisoSalidaEntrada(pse, pse, pse, pse);
+            pse = persalent.get(0);
+        } else {
+            JOptionPane.showMessageDialog(null, "No esta autorizado para salir");
         }
-
         
- 
-    }
+        
+        
+        
+        
+
     
-    
+        }
     
     
     
