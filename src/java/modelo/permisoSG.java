@@ -211,7 +211,7 @@ public class permisoSG {
     
     
     
-    //DATOS DE 4 TIPOS PARA INGRESO REAL Y ESTIPULADA APR
+  
     
 
    

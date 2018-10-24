@@ -278,32 +278,74 @@ public class ServletPermiso extends HttpServlet {
         
         //Autorizacion de seguridad
         //consulta ID
-        permisoSG setget = new permisoSG();
+        permisoSG setget = new permisoSG(id);
         Autorizacion autorz=new Autorizacion();
         ArrayList<permisoSG> permiso=new  ArrayList<>();//GUARDA ELEMENTOS 
+        
         permiso=autorz.consultaperID(setget);
         setget = permiso.get(0);//MUESTRA ELEMENTOS
+        
         
         if( autorz.AutorizaSeguridad(setget.getPer_estado()) ){ //SI RETORNA TRUE (AUTORIZADO)
             JOptionPane.showMessageDialog(null, "AUTORIZADO");
             
             //LLAMAR MÉTODO PARA DETERMINAR SI ES UN INGRESO O UNA SALIDA
             //PERMISO ENTRADA y SALIDA
-            permisoSG pse = new permisoSG(fecha_ingresoReal, hora_ingresoReal, fecha_salidaReal, hora_salidaReal);
+            Calendar calendario = Calendar.getInstance();
+            int hora, minutos, segundos, dia, mes, ano;
+            
+            //FECHA REAL DE SALIDA/INGRESO
+            dia = calendario.get(Calendar.DATE);
+            mes = calendario.get(Calendar.MONTH);
+            ano = calendario.get(Calendar.YEAR);
+            JOptionPane.showMessageDialog(null,dia + "-" + (mes+1) + "-" + ano);
+            String fechaReal = ano+"-"+mes+"-"+dia;
+            
+            //HORA REAL DE SALIDA/INGRESO
+            hora =calendario.get(Calendar.HOUR_OF_DAY);
+            minutos = calendario.get(Calendar.MINUTE);
+            segundos = calendario.get(Calendar.SECOND);
+            JOptionPane.showMessageDialog(null,hora + ":" + minutos + ":" + segundos);
+            String horaReal = hora+":"+minutos+":"+segundos;
+            
+            
+            permisoSG pser = new permisoSG(fecha_ingresoReal, hora_ingresoReal, fecha_salidaReal, hora_salidaReal);//REAL
             ArrayList<permisoSG> persalent=new  ArrayList<>();
-            persalent=autorz.PermisoSalidaEntrada(pse, pse, pse, pse);
-            pse = persalent.get(0);
+            String EntradaSalida =autorz.PermisoSalidaEntrada(setget); //Se guarda "Ingreso" o "Salida"
+            
+            String fechaEstipulada, horaEstipulada;
+            if(EntradaSalida.equals("Salida")) { 
+                fechaEstipulada = setget.getPer_fecha_salida();
+                horaEstipulada = setget.getPer_hora_Salida();
+            } else if(EntradaSalida.equals("Ingreso")) {
+                fechaEstipulada = setget.getPer_fecha_ingreso();
+                horaEstipulada = setget.getPer_hora_ingreso();
+            }
+            
+            //Ya sabiendo si el aprendiz está saliendo o ingresando, comparamos las fecha y hora real con la fecha y hora estipulada
+            peraprendiz=autorz.fechaHoraEstipulada(fechaReal, horaReal, fechaEstipulada, horaEstipulada);
+            
+            
+            permisoSG permisoapr = new permisoSG(fecha_ingreso, hora_ingreso, fecha_salida,hora_Salida );//APRENDIZ
+            ArrayList<permisoSG> peraprendiz=new  ArrayList<>();
+            
+            
+            //VERIFICACION DE FECHAS Y HORAS DE APRENDIZ CON REALES
+            
+            
         } else {
             JOptionPane.showMessageDialog(null, "No esta autorizado para salir");
         }
-        
-        
+
         
         
         
 
-    
         }
+        
+        
+        
+        
     
     
     

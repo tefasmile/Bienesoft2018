@@ -13,7 +13,7 @@
     <body>
         <table>
             <tr bgcolor="#A9CCE3" border="1">
-                <th colspan="9" class="center">Lista de permisos de aprendices</th>
+                <th colspan="9" class="center">Lista de permisos de aprendices AUTORIZADOS</th>
             </tr>
             <tr bgcolor="skyblue">
                 <th>ID</th>

@@ -26,6 +26,7 @@ public class Autorizacion {
     //METODO DE CONSULTA ID DE PERMISO
     public ArrayList<permisoSG> consultaperID(permisoSG perId ){
         ArrayList<permisoSG> permisoid = new ArrayList<>();
+
         try {
            ps = cnn.prepareStatement("SELECT*FROM permiso WHERE per_ID='"+perId.getPer_ID()+"' ");
            rs = ps.executeQuery();
@@ -47,7 +48,6 @@ public class Autorizacion {
     
     //METODO DE AUTORIZACION DE PERMISO ACCION PARA EL GUARDA
     public boolean AutorizaSeguridad(String estado){
-
         if(estado.equals("Autorizado")){
             return true;        
         }        
@@ -58,35 +58,53 @@ public class Autorizacion {
     
     //METODO DE ENTRADA Y SALIDA DE PERMISO FRENTE APRENDIZ 
     
-    //PERMISO PARA VERIFICAR SI ES UNA ENTRADA O UNA SALIDA
+    //PERMISO PARA VERIFICAR SI ES UNA ENTRADA O UNA SALIDA REALES
     //public ArrayList<permisoSG> PermisoSalida(permisoSG fapr, permisoSG hapr, permisoSG fr, permisoSG hr) 
-    public ArrayList<permisoSG> PermisoSalidaEntrada(permisoSG fireal, permisoSG hireal, permisoSG fsreal, permisoSG hsreal){
-        ArrayList<permisoSG> permisoes = new ArrayList<>();
+    public String PermisoSalidaEntrada(permisoSG setget){
+        //ArrayList<permisoSG> permisoes = new ArrayList<>();
+        String fechaSalReal = setget.getPer_fecha_salidaReal();
+        String horaSalReal = setget.getPer_hora_salidaReal();
+        String fechaInReal = setget.getPer_fecha_ingresoReal();
+        String horaInReal = setget.getPer_hora_ingresoReal();
         
-        if(fireal == null && hireal == null) {
-            JOptionPane.showMessageDialog(null, "Es una entrada");
-        }else if( fsreal == null && hsreal == null){
+        if(fechaSalReal == null && horaSalReal == null && fechaInReal == null && horaInReal == null) {
             JOptionPane.showMessageDialog(null, "Es una salida");
+            return "Salida";
+            
+        }else if(fechaSalReal != null && horaSalReal != null && fechaInReal == null && horaInReal == null){
+            JOptionPane.showMessageDialog(null, "Es un ingreso");
+            return "Ingreso";
         }
-           
-        return permisoes;
-        
+        return "Permiso terminado";
     }
     
     
     
-    //METODO DE VERIFICACION DE HORAS Y FECHAS ESTIPULADAS DEL APRENDIZ CON REALES
-    public ArrayList<permisoSG> fechaHoraEstipulada(permisoSG fireal, permisoSG hireal, permisoSG fsreal, permisoSG hsreal){
-        ArrayList<permisoSG> permisoes = new ArrayList<>();
+    //METODO DE VERIFICACION DE HORAS Y FECHAS ESTIPULADAS DEL APRENDIZ CON REALES----
+    public boolean fechaHoraEstipulada(String fechaReal, String horaReal, String fechaEstipulada, String horaEstipulada){
         
-        if(fireal == null && hireal == null) {
-            JOptionPane.showMessageDialog(null, "Es una entrada");
-        }else if( fsreal == null && hsreal == null){
-            JOptionPane.showMessageDialog(null, "Es una salida");
+        //Separar fecha en día, mes y año (FR[0]   F[1]   F[2])
+        String FR[] = fechaReal.split("-"); 
+        String FEap[] = fechaEstipulada.split("-");//fecha estipulada por aprendiz
+        
+        //Separar hora en hora y minutos (HR[0]   HEap[1] )
+        String HR[] = horaReal.split(":");
+        String HEap[] = horaEstipulada.split(":");
+            
+        //Si el año actual es igual al año estipulado
+        //Si el mes actual es igual al estipulado
+        //Si el día actual es igual al estipulado
+        if(FR[0].equals(FEap[0]) && FR[1].equals(FEap[1]) && FR[2].equals(FEap[2])) { 
+            
+            if( HR[0].equals(HEap[0]) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1]) + 10) ) {
+                JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
+                return true;
+            }
+            JOptionPane.showMessageDialog(null,"La hora no coincide con la estipualada por el aprendiz");
+            
         }
-           
-        return permisoes;
-        
+        JOptionPane.showMessageDialog(null,"La fecha y hora no coincide con la estipulada por el aprendiz");
+        return false;        
     }
     
     
