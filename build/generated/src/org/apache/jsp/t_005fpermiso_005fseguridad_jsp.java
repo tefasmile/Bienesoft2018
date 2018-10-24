@@ -78,7 +78,6 @@ public final class t_005fpermiso_005fseguridad_jsp extends org.apache.jasper.run
       out.write("                <th class=\"center\">Motivo</th>\n");
       out.write("                <th class=\"center\">Estado</th>\n");
       out.write("                <th class=\"center\">Autoriza</th>\n");
-      out.write("                <th class=\"center\">Evidencia</th>\n");
       out.write("            </tr>\n");
       out.write("            \n");
       out.write("            ");
@@ -103,7 +102,7 @@ public final class t_005fpermiso_005fseguridad_jsp extends org.apache.jasper.run
       out.write("\"></td>\n");
       out.write("                <td><input readonly type=\"text\" name=\"t_tipo\" value=\"");
       out.print(x.getPer_tipo());
-      out.write("\"></td>\n");
+      out.write("\"></td>                \n");
       out.write("                <td><input readonly type=\"date\" name=\"t_fechsal\" value=\"");
       out.print(x.getPer_fecha_salida());
       out.write("\"></td>\n");
@@ -139,18 +138,11 @@ public final class t_005fpermiso_005fseguridad_jsp extends org.apache.jasper.run
       out.write("\" readonly></td>\n");
       out.write("                <td><input type=\"text\" name=\"t_autoriza\" value=\"");
       out.print(x.getPer_autoriza());
-      out.write("\"></td> \n");
-      out.write("                <th><img src=\"");
-      out.print(x.getPer_evidenciaAdjunta());
-      out.write("\" width=\"60\" height=\"60\"/></th>\n");
-      out.write("                <td style=\"display: none;\"><input type=\"text\" value=\"");
-      out.print(x.getPer_evidenciaAdjunta());
       out.write("\"></td>\n");
       out.write("                \n");
-      out.write("\n");
-      out.write("                <td><input type=\"submit\" name=\"btn-actualizar\" value=\"Actualizar\"></td>\n");
-      out.write("                <td><input type=\"submit\" name=\"btn-eliminar\" value=\"Eliminar\"></td>\n");
-      out.write("\n");
+      out.write("                <td><input type=\"submit\"></td>\n");
+      out.write("                \n");
+      out.write("             \n");
       out.write("                </tr>\n");
       out.write("            </form>\n");
       out.write("            \n");
@@ -163,6 +155,15 @@ public final class t_005fpermiso_005fseguridad_jsp extends org.apache.jasper.run
       out.write("\n");
       out.write("            \n");
       out.write("        </table>\n");
+      out.write("            \n");
+      out.write("            <!--SCRIPT PARA DESABILITAR BOTON-->\n");
+      out.write("            \n");
+      out.write("            <script>\n");
+      out.write("                function btnapagar(){\n");
+      out.write("                    \n");
+      out.write("                }\n");
+      out.write("            </script>\n");
+      out.write("            \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
