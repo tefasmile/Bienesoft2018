@@ -34,12 +34,12 @@ public class tipopermiso {
         int hora = Integer.parseInt(horario[0]);
         int minutos = Integer.parseInt(horario[1]);
         
-        if(tipoPermiso.equals("semana mañana")){
-            if( (hora >= 8 && hora <= 11) && minutos <= 10) {
+        if(tipoPermiso.equals("semana morning")){
+            if( (hora >= 8 && hora <= 12) && minutos <= 10) {
                 return true;
             }
         } else if(tipoPermiso.equals("semana tarde")) {
-            if( (hora >= 14 && hora <= 17) && minutos <= 10) {
+            if( (hora >= 12 && hora <= 12) && minutos <= 20) {
                 return true;
             }
         }

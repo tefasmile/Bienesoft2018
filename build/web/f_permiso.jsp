@@ -24,7 +24,7 @@
                 <!--seleccion de permiso--->
                 <select name="tipoper">  
                     <option>Tipo de permiso</option>
-                    <option name="tipoper" value="semana mañana">semana mañana</option>
+                    <option name="tipoper" value="semana morning">semana morning</option>
                     <option name="tipoper" value="semana tarde">semana tarde</option>
                     <option name="tipoper" value="fin de semana">fin de semana</option>
                     <option name="tipoper" value="extra">extra</option>

@@ -307,7 +307,6 @@ public class ServletPermiso extends HttpServlet {
             }
             
             String fechaReal = ano+"-"+(mes+1)+"-"+dia;
-            JOptionPane.showMessageDialog(null,fechaReal);
             
             //HORA REAL DE SALIDA/INGRESO
             hora =calendario.get(Calendar.HOUR_OF_DAY);
@@ -315,7 +314,6 @@ public class ServletPermiso extends HttpServlet {
             segundos = calendario.get(Calendar.SECOND);
             
             String horaReal = hora+":"+minutos+":"+segundos;
-            JOptionPane.showMessageDialog(null,horaReal);
             
             
             permisoSG pser = new permisoSG(fecha_ingresoReal, hora_ingresoReal, fecha_salidaReal, hora_salidaReal);//REAL
@@ -339,11 +337,20 @@ public class ServletPermiso extends HttpServlet {
             
             //RESTRICCIONES GENERALES DE HORARIOS
             if(verifica){
-                
-                if(setget.getPer_tipo().equals("semana mañana") || setget.getPer_tipo().equals("semana tarde") ){
-                    
-                    JOptionPane.showMessageDialog(null, horaReal);
-                    tipoper.metodo_semana(horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                JOptionPane.showMessageDialog(null,setget.getPer_tipo());
+                if(setget.getPer_tipo().equals("semana morning") || setget.getPer_tipo().equals("semana tarde") ){
+                    boolean autorizado = tipoper.metodo_semana(horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                    if(autorizado) {
+                        JOptionPane.showMessageDialog(null, "Puede salir");
+                        
+                        //Enviar fechaReal horaReal al método de inserción
+                        
+                        //Termina proceso de salida o de entrada
+                        //guardar hora de fecha y salidaReal a la BD
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No puede salir");
+                    }
                 }else if(setget.getPer_tipo().equals("fin de semana")){
                     //tipoper.metodo_finsemana(fechaReal, horaReal,setget.getPer_tipo());//horareal y tipopermiso
                 }

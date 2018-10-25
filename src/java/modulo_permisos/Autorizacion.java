@@ -102,18 +102,26 @@ public class Autorizacion {
             HEap[1] = HEap[1].substring(1);
             JOptionPane.showMessageDialog(null,HEap[1]);
         }
+        
+        JOptionPane.showMessageDialog(null,"Fecha real: "+FR[0]+"-"+FR[1]+"-"+FR[2]);
+        JOptionPane.showMessageDialog(null,"Fecha estipulada: "+FEap[0]+"-"+FEap[1]+"-"+FEap[2]);
+        
+        JOptionPane.showMessageDialog(null,"Hora real: "+HR[0]+":"+HR[1]);
         JOptionPane.showMessageDialog(null,"Hora estipulada: "+HEap[0]+":"+HEap[1]);
+
         
         if(FR[0].equals(FEap[0]) && FR[1].equals(FEap[1]) && FR[2].equals(FEap[2])) { 
             
-            if( HR[0].equals(HEap[0].substring(1)) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1].substring(1)) + 10)) {
+            if( HR[0].equals(HEap[0]) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1]) + 10)) {
                 JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
                 return true;
             }
-            JOptionPane.showMessageDialog(null,"La hora no coincide con la estipualada por el aprendiz");
+            JOptionPane.showMessageDialog(null,"La hora no coincide con la estipulada por el aprendiz");
             
+        } else {
+            JOptionPane.showMessageDialog(null,"La fecha no coincide con la estipulada por el aprendiz");
         }
-        JOptionPane.showMessageDialog(null,"La fecha y hora no coincide con la estipulada por el aprendiz");
+        
         return false;        
     }
     
