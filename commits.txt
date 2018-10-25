@@ -1,0 +1,79 @@
+commit 2f6cd92ba2d228aadef069a587e439ef0e4de82a
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Wed Oct 24 13:19:08 2018 -0500
+
+    primera fase de implementacion de logica de permisos en java
+
+commit c15ff14642c4e4120f5f3986cb988b342030d598
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Tue Oct 23 19:30:55 2018 -0500
+
+    logica a en vista de seguridad
+
+commit e68c404f74c10e1f617fabb53c4f1804d09b509e
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Tue Oct 23 19:26:28 2018 -0500
+
+    cruds con logica de permiso en vista seguridad
+
+commit c8d57c9d9846bf00c618f6a77dce7700a6d0996a
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Mon Oct 22 13:37:30 2018 -0500
+
+    Seleccion de tipo de permiso en comboBox y con dato guardado OK
+
+commit 7bc504ab3f3965d946e41a43ca0503a431524532
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Sun Oct 21 12:17:58 2018 -0500
+
+    implementacion de comboBox al campo tipo de permiso en f_permiso del aprendiz
+
+commit 7edc1404fa9b8cf317f0e2eb9747329b991b976b
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Fri Oct 19 19:50:30 2018 -0500
+
+    la t_permiso realiza el crud ok sin los datos de fechas y salidas
+    reales
+
+commit c7d203fbf8b87285b7f2adfa1e6e016ab438587a
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Fri Oct 19 19:06:20 2018 -0500
+
+    la t_permiso ejecuta save-delete exepto el actualizar por tener
+    implementados los campos de salidas y fechas reales
+
+commit 078ea1c511d6e1092a3cadc86f76e563ea66b9c6
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Wed Oct 17 15:43:34 2018 -0500
+
+    accion de elimina y de inserccion ok en tabla de t_emergencia
+
+commit 7fe8c6bf0bf2d4f8d5c2e515befd1c76e617173a
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Wed Oct 17 15:07:24 2018 -0500
+
+    accion de elimina ok en tabla de t_permiso
+
+commit 91c37ff1a39ff354bde954b5eb31148463db28a5
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Wed Oct 17 14:16:46 2018 -0500
+
+    ajuste y correcion de f_permiso, la inserccion de dato es ok
+
+commit 8dda689da3be64a4df82a53390d84081be5013d2
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Sat Oct 13 18:50:11 2018 -0500
+
+    Ocho tablas listas con su crud excepto permiso y salidaEmergencia
+
+commit 44c683032d13e7dcb47c0d741593ba1b5fa981cf
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Sat Oct 13 11:41:23 2018 -0500
+
+    tabla de crud permiso lista
+
+commit aaa88bc46ac196e709842cad39b23e3f7e250410
+Author: tefa zapata <tefaz.n@gmail.com>
+Date:   Thu Oct 11 20:50:00 2018 -0500
+
+    Archivos iniciales de nuestro proyecto

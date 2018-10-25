@@ -13,7 +13,7 @@
     <body>
         <table>
             <tr bgcolor="#A9CCE3" border="1">
-                <th colspan="9" class="center">Lista de permisos de aprendices AUTORIZADOS</th>
+                <th colspan="9" class="center">Lista de permisos GUARDA SEGURIDAD</th>
             </tr>
             <tr bgcolor="skyblue">
                 <th>ID</th>
@@ -55,7 +55,7 @@
                 <td><input type="text" name="t_moti" value="<%=x.getPer_motivo()%>"></td>
                 <td><input type="text" name="t_estado" value="<%=x.getPer_estado()%>"></td>
 
-                <td><input type="submit" name="btn-autorizado" value="Autorizado"></td>
+                <td><input type="submit" name="btn-autorizado" value="ok"></td>
                 
                 </tr>
             </form>

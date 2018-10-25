@@ -28,72 +28,38 @@ public class tipopermiso {
     
     
     //METODO SEMANA
-    public String metodo_semana(String opcuno){
-        String psemana="";
-        JOptionPane.showMessageDialog(null,"metodo semana, archivo tipopermiso.java");
+    public boolean metodo_semana(String horaReal, String tipoPermiso ){
         
-        //Vars 
-        int hsalreal, htope, htopet, horapr, contapermiso, hora, minutos, segundos;
-        String resp="si";
-        //Datos de la hora
-        Calendar calendario = Calendar.getInstance();
+        String horario[] = horaReal.split(":");
+        int hora = Integer.parseInt(horario[0]);
+        int minutos = Integer.parseInt(horario[1]);
         
-        hora =calendario.get(Calendar.HOUR_OF_DAY);
-        minutos = calendario.get(Calendar.MINUTE);
-        segundos = calendario.get(Calendar.SECOND);
-        //vars
-//        HttpSession dato = request.getSession();
-//        String tipo = (String) dato.getAttribute("tipoper");
-        
-        
-//        //Inicio de codigo
-//        while(resp != "no"){
-//                contapermiso=contapermiso+1;
-//                System.out.println("Tu nombre");
-//                String nombre=request.getParameter("documento");
-//                System.out.println("Hora aprendiz que diligencia");
-//                int horapr=entrada.nextInt();
-//                //10 min de salida
-//                if(horapr == horapr){
-//                    horapr=+10;
-//                    System.out.println("1");
-//                } 
-//        }
-        
-        
-        return psemana;
-        //datos aprendiz
-
-
-        
-        
-      
+        if(tipoPermiso.equals("semana mañana")){
+            if( (hora >= 8 && hora <= 11) && minutos <= 10) {
+                return true;
+            }
+        } else if(tipoPermiso.equals("semana tarde")) {
+            if( (hora >= 14 && hora <= 17) && minutos <= 10) {
+                return true;
+            }
+        }
+      return false;
     }
     
     
     //METODO FIN DE SEMANA
-    public String metodo_fsemana(String opcdos){
-        
-        String pfinsemana="";
-        JOptionPane.showMessageDialog(null,"metodo fin de semana, ENTRO A metodo FIN DE SEMANA");
-        
-        return pfinsemana;
-        
-      
-    }
+//    public boolean metodo_finsemana(String fechaReal, String horaReal, String tipoPermiso){
+//        
+//        String pfinsemana="";
+//        JOptionPane.showMessageDialog(null,"metodo fin de semana, ENTRO A metodo FIN DE SEMANA");
+//        
+//        return pfinsemana;
+//        
+//      
+//    }
     
     
     
-    //METODO EMERGENCIA
-    public String metodo_emergencia(String opctres){
-        
-        String pemergencia="";
-        JOptionPane.showMessageDialog(null,"Permiso Emergencia");
-        
-        return pemergencia;
-        
-      
-    }
     
     
     

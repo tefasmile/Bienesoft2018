@@ -59,7 +59,7 @@ public final class t_005fpermisoSeguridad_jsp extends org.apache.jasper.runtime.
       out.write("    <body>\r\n");
       out.write("        <table>\r\n");
       out.write("            <tr bgcolor=\"#A9CCE3\" border=\"1\">\r\n");
-      out.write("                <th colspan=\"9\" class=\"center\">Lista de permisos de aprendices</th>\r\n");
+      out.write("                <th colspan=\"9\" class=\"center\">Lista de permisos de aprendices AUTORIZADOS</th>\r\n");
       out.write("            </tr>\r\n");
       out.write("            <tr bgcolor=\"skyblue\">\r\n");
       out.write("                <th>ID</th>\r\n");

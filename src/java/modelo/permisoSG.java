@@ -210,8 +210,12 @@ public class permisoSG {
     }
     
     
+    //Fechas estipuladas
+    public permisoSG(String per_fecha_salida, String per_fecha_ingreso) {
+        this.per_fecha_salida = per_fecha_salida;
+        this.per_fecha_ingreso = per_fecha_ingreso;
+    }
     
-  
     
 
    

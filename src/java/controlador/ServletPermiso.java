@@ -298,22 +298,33 @@ public class ServletPermiso extends HttpServlet {
             dia = calendario.get(Calendar.DATE);
             mes = calendario.get(Calendar.MONTH);
             ano = calendario.get(Calendar.YEAR);
-            JOptionPane.showMessageDialog(null,dia + "-" + (mes+1) + "-" + ano);
-            String fechaReal = ano+"-"+mes+"-"+dia;
+            
+            if(dia <= 9){
+                dia = Integer.parseInt("0"+dia);
+            }
+            if(mes <= 9){
+                mes = Integer.parseInt("0"+mes);
+            }
+            
+            String fechaReal = ano+"-"+(mes+1)+"-"+dia;
+            JOptionPane.showMessageDialog(null,fechaReal);
             
             //HORA REAL DE SALIDA/INGRESO
             hora =calendario.get(Calendar.HOUR_OF_DAY);
             minutos = calendario.get(Calendar.MINUTE);
             segundos = calendario.get(Calendar.SECOND);
-            JOptionPane.showMessageDialog(null,hora + ":" + minutos + ":" + segundos);
+            
             String horaReal = hora+":"+minutos+":"+segundos;
+            JOptionPane.showMessageDialog(null,horaReal);
             
             
             permisoSG pser = new permisoSG(fecha_ingresoReal, hora_ingresoReal, fecha_salidaReal, hora_salidaReal);//REAL
             ArrayList<permisoSG> persalent=new  ArrayList<>();
             String EntradaSalida =autorz.PermisoSalidaEntrada(setget); //Se guarda "Ingreso" o "Salida"
             
-            String fechaEstipulada, horaEstipulada;
+            //Fecha y hora estipuladas por aprendiz
+            String fechaEstipulada="", horaEstipulada="";
+            
             if(EntradaSalida.equals("Salida")) { 
                 fechaEstipulada = setget.getPer_fecha_salida();
                 horaEstipulada = setget.getPer_hora_Salida();
@@ -322,15 +333,21 @@ public class ServletPermiso extends HttpServlet {
                 horaEstipulada = setget.getPer_hora_ingreso();
             }
             
-            //Ya sabiendo si el aprendiz está saliendo o ingresando, comparamos las fecha y hora real con la fecha y hora estipulada
-            peraprendiz=autorz.fechaHoraEstipulada(fechaReal, horaReal, fechaEstipulada, horaEstipulada);
             
+            tipopermiso tipoper=new tipopermiso();//INSTANCIA TIPOPERMISO
+            boolean verifica=autorz.fechaHoraEstipulada(fechaReal, horaReal, fechaEstipulada, horaEstipulada);
             
-            permisoSG permisoapr = new permisoSG(fecha_ingreso, hora_ingreso, fecha_salida,hora_Salida );//APRENDIZ
-            ArrayList<permisoSG> peraprendiz=new  ArrayList<>();
-            
-            
-            //VERIFICACION DE FECHAS Y HORAS DE APRENDIZ CON REALES
+            //RESTRICCIONES GENERALES DE HORARIOS
+            if(verifica){
+                
+                if(setget.getPer_tipo().equals("semana mañana") || setget.getPer_tipo().equals("semana tarde") ){
+                    
+                    JOptionPane.showMessageDialog(null, horaReal);
+                    tipoper.metodo_semana(horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                }else if(setget.getPer_tipo().equals("fin de semana")){
+                    //tipoper.metodo_finsemana(fechaReal, horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                }
+            }
             
             
         } else {

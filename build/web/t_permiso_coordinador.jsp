@@ -60,7 +60,7 @@
                 <td><input readonly type="time" name="t_hsreal" value="<%=x.getPer_hora_salidaReal()%>"></td>
                 <td><input readonly type="text" name="t_obser" value="<%=x.getPer_observacion_permiso_llegada()%>"></td>
                 <td><input readonly type="text" name="t_moti" value="<%=x.getPer_motivo()%>"></td>
-                <td><input type="text" name="t_estado" value="<%=x.getPer_estado()%>" readonly></td>
+                <td><input type="text" name="t_estado" value="<%=x.getPer_estado()%>"></td>
                 <td><input type="text" name="t_autoriza" value="<%=x.getPer_autoriza()%>"></td> 
                 <th><img src="<%=x.getPer_evidenciaAdjunta()%>" width="60" height="60"/></th>
                 <td style="display: none;"><input type="text" value="<%=x.getPer_evidenciaAdjunta()%>"></td>

@@ -94,9 +94,19 @@ public class Autorizacion {
         //Si el año actual es igual al año estipulado
         //Si el mes actual es igual al estipulado
         //Si el día actual es igual al estipulado
+        if(Integer.parseInt(HEap[0]) <= 9){
+            HEap[0] = HEap[0].substring(1);
+            JOptionPane.showMessageDialog(null,HEap[0]);
+        }
+        if(Integer.parseInt(HEap[1]) <= 9 && Integer.parseInt(HEap[1]) > 0){
+            HEap[1] = HEap[1].substring(1);
+            JOptionPane.showMessageDialog(null,HEap[1]);
+        }
+        JOptionPane.showMessageDialog(null,"Hora estipulada: "+HEap[0]+":"+HEap[1]);
+        
         if(FR[0].equals(FEap[0]) && FR[1].equals(FEap[1]) && FR[2].equals(FEap[2])) { 
             
-            if( HR[0].equals(HEap[0]) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1]) + 10) ) {
+            if( HR[0].equals(HEap[0].substring(1)) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1].substring(1)) + 10)) {
                 JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
                 return true;
             }
