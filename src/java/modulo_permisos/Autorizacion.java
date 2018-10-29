@@ -58,10 +58,8 @@ public class Autorizacion {
     
     //METODO DE ENTRADA Y SALIDA DE PERMISO FRENTE APRENDIZ 
     
-    //PERMISO PARA VERIFICAR SI ES UNA ENTRADA O UNA SALIDA REALES
-    //public ArrayList<permisoSG> PermisoSalida(permisoSG fapr, permisoSG hapr, permisoSG fr, permisoSG hr) 
+    //PERMISO PARA VERIFICAR SI ES UNA ENTRADA O UNA SALIDA REALES 
     public String PermisoSalidaEntrada(permisoSG setget){
-        //ArrayList<permisoSG> permisoes = new ArrayList<>();
         String fechaSalReal = setget.getPer_fecha_salidaReal();
         String horaSalReal = setget.getPer_hora_salidaReal();
         String fechaInReal = setget.getPer_fecha_ingresoReal();
@@ -112,7 +110,7 @@ public class Autorizacion {
         
         if(FR[0].equals(FEap[0]) && FR[1].equals(FEap[1]) && FR[2].equals(FEap[2])) { 
             
-            if( HR[0].equals(HEap[0]) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1]) + 10)) {
+            if( HR[0].equals(HEap[0]) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1]) + 10)) {//mas los 10 minutos
                 JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
                 return true;
             }

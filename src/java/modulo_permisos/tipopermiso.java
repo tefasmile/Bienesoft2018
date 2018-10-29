@@ -35,16 +35,20 @@ public class tipopermiso {
         int minutos = Integer.parseInt(horario[1]);
         
         if(tipoPermiso.equals("semana morning")){
-            if( (hora >= 8 && hora <= 12) && minutos <= 10) {
+            if( (hora >= 8 && hora <= 11) && minutos <= 10) {
                 return true;
             }
         } else if(tipoPermiso.equals("semana tarde")) {
-            if( (hora >= 12 && hora <= 12) && minutos <= 20) {
+            if( (hora >= 14 && hora <= 17) && minutos <= 10) {
                 return true;
             }
         }
       return false;
     }
+    
+    
+    //METODO DE INSERCCION DE fechaReal horaReal AL MOMENTO DE LA ACCION
+    
     
     
     //METODO FIN DE SEMANA
