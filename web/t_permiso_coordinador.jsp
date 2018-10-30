@@ -66,8 +66,8 @@
                 <td style="display: none;"><input type="text" value="<%=x.getPer_evidenciaAdjunta()%>"></td>
                 
 
-                <td><input type="submit" name="btn-actualizar" value="Actualizar"></td>
-                <td><input type="submit" name="btn-eliminar" value="Eliminar"></td>
+                <td><input type="submit" name="btn-coordupdate" value="Actualizar"></td>
+                <td><input type="submit" name="btn-coordeliminar" value="Eliminar"></td>
 
                 </tr>
             </form>

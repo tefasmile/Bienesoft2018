@@ -148,8 +148,8 @@ public final class t_005fpermiso_005fcoordinador_jsp extends org.apache.jasper.r
       out.write("\"></td>\n");
       out.write("                \n");
       out.write("\n");
-      out.write("                <td><input type=\"submit\" name=\"btn-actualizar\" value=\"Actualizar\"></td>\n");
-      out.write("                <td><input type=\"submit\" name=\"btn-eliminar\" value=\"Eliminar\"></td>\n");
+      out.write("                <td><input type=\"submit\" name=\"btn-coordupdate\" value=\"Actualizar\"></td>\n");
+      out.write("                <td><input type=\"submit\" name=\"btn-coordeliminar\" value=\"Eliminar\"></td>\n");
       out.write("\n");
       out.write("                </tr>\n");
       out.write("            </form>\n");

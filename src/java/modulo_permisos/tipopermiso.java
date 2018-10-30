@@ -35,23 +35,46 @@ public class tipopermiso {
         int minutos = Integer.parseInt(horario[1]);
         
         if(tipoPermiso.equals("semana morning")){
-            if( (hora >= 8 && hora <= 11) && minutos <= 10) {
-                return true;
-            }
+            if( (hora >= 8 && hora < 13)) return true;
+            if(hora==13 && minutos <= 10) return true;
         } else if(tipoPermiso.equals("semana tarde")) {
-            if( (hora >= 14 && hora <= 17) && minutos <= 10) {
-                return true;
-            }
+            if( (hora >= 14 && hora < 17)) return true;
+            if(hora==17 && minutos <= 10) return true;
         }
       return false;
     }
     
     
     //METODO DE INSERCCION DE fechaReal horaReal AL MOMENTO DE LA ACCION
+    public boolean metodo_insertpersemana(int id, String fechaReal,String horaReal, String campo1, String campo2){
+        
+        if(fechaReal.equals(fechaReal) && horaReal.equals(horaReal) ){
+            //FECHA Y HORA DE SALIDA para poder salir del cba
+            try {
+                ps = cnn.prepareStatement("UPDATE permiso SET '"+campo1+"'='"+fechaReal+"' AND  '"+campo2+"'='"+horaReal+"'"+
+                        " WHERE per_ID='"+id+"' ");
+//                ps = cnn.prepareStatement("UPDATE  permiso  SET  campo1='"+fechaReal+"' AND  campo2='"+horaReal+"' WHERE per_ID='"+id+"' ");     
+               ps.executeUpdate();
+  
+            } catch (Exception e) {
+
+                JOptionPane.showMessageDialog(null, "Error, verifica este bug "+e);
+            }
+        
+        
+            return true;
+
+        }
+        
+        
+        
+        return false;
+        
+    }
     
     
     
-    //METODO FIN DE SEMANA
+        //METODO FIN DE SEMANA
 //    public boolean metodo_finsemana(String fechaReal, String horaReal, String tipoPermiso){
 //        
 //        String pfinsemana="";
@@ -61,6 +84,21 @@ public class tipopermiso {
 //        
 //      
 //    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
     
     
     
