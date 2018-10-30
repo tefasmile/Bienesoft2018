@@ -176,7 +176,7 @@ public class ServletPermiso extends HttpServlet {
         
         Id=Integer.parseInt(request.getParameter("t_Id"));   
         documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
-        tipo=request.getParameter("tipoper");
+        tipo=request.getParameter("t_tipo");
         fecha_salida=request.getParameter("t_fechsal");
         fecha_ingreso=request.getParameter("t_fechingre");
         hora_Salida=request.getParameter("t_horasal");

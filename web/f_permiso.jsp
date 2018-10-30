@@ -24,10 +24,10 @@
                 <!--seleccion de permiso--->
                 <select name="tipoper">  
                     <option>Tipo de permiso</option>
-                    <option name="tipoper" value="semana morning">semana morning</option>
-                    <option name="tipoper" value="semana tarde">semana tarde</option>
-                    <option name="tipoper" value="fin de semana">fin de semana</option>
-                    <option name="tipoper" value="extra">extra</option>
+                    <option value="semana morning">semana morning</option>
+                    <option value="semana tarde">semana tarde</option>
+                    <option value="fin de semana">fin de semana</option>
+                    <option value="extra">extra</option>
                 </select>
 
                 <td><input type="date" name="f_fechsal" placeholder="Fecha salida"></td>

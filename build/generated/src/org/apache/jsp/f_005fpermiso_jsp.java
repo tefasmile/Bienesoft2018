@@ -73,10 +73,10 @@ public final class f_005fpermiso_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                <!--seleccion de permiso--->\r\n");
       out.write("                <select name=\"tipoper\">  \r\n");
       out.write("                    <option>Tipo de permiso</option>\r\n");
-      out.write("                    <option name=\"tipoper\" value=\"semana morning\">semana morning</option>\r\n");
-      out.write("                    <option name=\"tipoper\" value=\"semana tarde\">semana tarde</option>\r\n");
-      out.write("                    <option name=\"tipoper\" value=\"fin de semana\">fin de semana</option>\r\n");
-      out.write("                    <option name=\"tipoper\" value=\"extra\">extra</option>\r\n");
+      out.write("                    <option value=\"semana morning\">semana morning</option>\r\n");
+      out.write("                    <option value=\"semana tarde\">semana tarde</option>\r\n");
+      out.write("                    <option value=\"fin de semana\">fin de semana</option>\r\n");
+      out.write("                    <option value=\"extra\">extra</option>\r\n");
       out.write("                </select>\r\n");
       out.write("\r\n");
       out.write("                <td><input type=\"date\" name=\"f_fechsal\" placeholder=\"Fecha salida\"></td>\r\n");
