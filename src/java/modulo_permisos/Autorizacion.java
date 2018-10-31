@@ -21,6 +21,7 @@ public class Autorizacion {
     com.mysql.jdbc.Connection cnn=con.conexiondb();
     PreparedStatement ps= null;
     ResultSet rs=null;
+    private ArrayList<String> vacaciones;
     
 
     //METODO DE CONSULTA ID DE PERMISO
@@ -124,7 +125,23 @@ public class Autorizacion {
     }
     
     
+    //METODO PERMISO CON DIAS FESTIVOS
+    public boolean diasFestivos(){
+        
+        //TRABAJO CON FECHA Y HORA PARA FIN DE SEMANA
+        int year, easterMonth, easterDay;
+        ArrayList<String> vacaciones = new ArrayList<String>();
+        //DIAS DE FIESTA
+        this.vacaciones = new ArrayList<String>();
+        this.vacaciones.add("0:1");// Primero de Enero
+	this.vacaciones.add("4:1");// Dia del trabajo 1 de mayo
+	this.vacaciones.add("6:20");//Independencia 20 de Julio
+	this.vacaciones.add("7:7");//Batalla de boyaca 7 de agosto
+	this.vacaciones.add("11:8");//Maria inmaculada 8 de diciembre
+	this.vacaciones.add("11:25");//Navidad 25 de diciembre
     
+        return false;
+    }
     
     
     

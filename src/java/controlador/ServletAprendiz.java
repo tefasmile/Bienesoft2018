@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import java.io.File;
@@ -108,7 +104,6 @@ public class ServletAprendiz extends HttpServlet {
 
     
     //METODO PARA GUARDAR
-    
     private void guardarAprendiz(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -331,7 +326,23 @@ public class ServletAprendiz extends HttpServlet {
             response.sendRedirect("t_aprendiz.jsp");
         
     }
+        
+        
+        
+    //TRIGGERS DE ACUERDO AL TIEMPO DE PERMANENCIA
+    private void eliminaTipoAprendiz(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
     
-    }
+        //APRENDIZ 1 YEAR
+    
+    }    
+        
+        
+        
+        
+    
+}
 
 

@@ -24,6 +24,7 @@ public class tipopermiso {
     Connection cnn=con.conexiondb();
     PreparedStatement ps= null;
     ResultSet rs=null;
+    private ArrayList<String> vacaciones;
     
     
     
@@ -35,8 +36,8 @@ public class tipopermiso {
         int minutos = Integer.parseInt(horario[1]);
         
         if(tipoPermiso.equals("semana morning")){
-            if( (hora >= 8 && hora < 13)) return true;
-            if(hora==13 && minutos <= 10) return true;
+            if( (hora >= 8 && hora < 12)) return true;
+            if(hora==12 && minutos <= 10) return true;
         } else if(tipoPermiso.equals("semana tarde")) {
             if( (hora >= 14 && hora < 17)) return true;
             if(hora==17 && minutos <= 10) return true;
@@ -51,39 +52,40 @@ public class tipopermiso {
         if(fechaReal.equals(fechaReal) && horaReal.equals(horaReal) ){
             //FECHA Y HORA DE SALIDA para poder salir del cba
             try {
-                ps = cnn.prepareStatement("UPDATE permiso SET '"+campo1+"'='"+fechaReal+"' AND  '"+campo2+"'='"+horaReal+"'"+
-                        " WHERE per_ID='"+id+"' ");
-//                ps = cnn.prepareStatement("UPDATE  permiso  SET  campo1='"+fechaReal+"' AND  campo2='"+horaReal+"' WHERE per_ID='"+id+"' ");     
+                ps = cnn.prepareStatement("UPDATE permiso SET "+campo1+"='"+fechaReal+"' , "+campo2+"='"+horaReal+"'"+
+                        " WHERE per_ID='"+id+"' ");    
+               
                ps.executeUpdate();
   
             } catch (Exception e) {
 
                 JOptionPane.showMessageDialog(null, "Error, verifica este bug "+e);
             }
-        
-        
             return true;
-
         }
-        
-        
-        
         return false;
         
     }
     
     
     
-        //METODO FIN DE SEMANA
-//    public boolean metodo_finsemana(String fechaReal, String horaReal, String tipoPermiso){
-//        
-//        String pfinsemana="";
-//        JOptionPane.showMessageDialog(null,"metodo fin de semana, ENTRO A metodo FIN DE SEMANA");
-//        
-//        return pfinsemana;
-//        
-//      
-//    }
+    //METODO FIN DE SEMANA
+    public boolean metodo_finsemana(String fechaReal, String horaReal, String tipoPermiso){
+        
+        JOptionPane.showMessageDialog(null,"metodo fin de semana, ENTRO A metodo FIN DE SEMANA");
+        
+        String horario[] = horaReal.split(":");
+        int hora = Integer.parseInt(horario[0]);
+        int minutos = Integer.parseInt(horario[1]);
+        
+        
+        
+	
+        
+        return true;
+        
+      
+    }
     
     
     

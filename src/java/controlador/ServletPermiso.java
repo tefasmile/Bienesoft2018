@@ -31,7 +31,7 @@ public class ServletPermiso extends HttpServlet {
     //VARS GLOBAL
     int Id,documento;
     String tipo, fecha_salida, fecha_ingreso,hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal,observacion_permiso_llegada,motivo,
-    estado, autoriza;
+    estado, autoriza, evidenciaAdjunta;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,6 +56,7 @@ public class ServletPermiso extends HttpServlet {
         if(request.getParameter("btn-actualizar") != null){
          this.actualizarPermiso(request,response);
         }
+        
         //ACTUALIZAR COORDINADOR
         if(request.getParameter("btn-coordupdate") != null){
          this.actualizarPermisoCoord(request,response);
@@ -138,7 +139,7 @@ public class ServletPermiso extends HttpServlet {
         estado=request.getParameter("f_estado");
         autoriza=request.getParameter("f_autoriza");
         
-        String evidenciaAdjunta="";
+        evidenciaAdjunta="";
         
         Part fot =request.getPart("f_evidenciaAdjunta");
         String nomfoto=fot.getSubmittedFileName();
@@ -190,25 +191,7 @@ public class ServletPermiso extends HttpServlet {
         estado=request.getParameter("t_estado");
         autoriza=request.getParameter("t_autoriza");
         
-        String evidenciaAdjunta="";
-        
-        Part fot =request.getPart("t_evidenciaAdjunta");
-        String nomfoto=fot.getSubmittedFileName();
-
-        int i = nomfoto.lastIndexOf("\\");
-        nomfoto = nomfoto.substring(i+1);
-        String nombre=documento+"_"+nomfoto;
-        String Url="C:\\Users\\Stefany\\Documents\\NetBeansProjects\\Bienesoft1.0\\web\\img\\"+nombre;
-        evidenciaAdjunta="img/"+nombre;
-        InputStream file=fot.getInputStream();
-        File f=new File(Url);
-        FileOutputStream sal = new FileOutputStream(f);
-        int num=file.read();
-        while(num != -1){
-            sal.write(num);
-            num=file.read();
-        }
-            
+           
         permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
         crudPermisos crud = new crudPermisos();
         crud.actualizar_permiso(setget);
@@ -222,41 +205,23 @@ public class ServletPermiso extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        Id=Integer.parseInt(request.getParameter("t_Id"));   
-        documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
-        tipo=request.getParameter("tipoper");
-        fecha_salida=request.getParameter("t_fechsal");
-        fecha_ingreso=request.getParameter("t_fechingre");
-        hora_Salida=request.getParameter("t_horasal");
-        hora_ingreso=request.getParameter("t_horaingre");
-        fecha_ingresoReal=request.getParameter("f_fireal");
-        hora_ingresoReal=request.getParameter("f_hireal");
-        fecha_salidaReal=request.getParameter("f_fsreal");
-        hora_salidaReal=request.getParameter("f_hsreal");
-        observacion_permiso_llegada=request.getParameter("t_obser");
-        motivo=request.getParameter("t_moti");
-        estado=request.getParameter("t_estado");
-        autoriza=request.getParameter("t_autoriza");
+        Id=Integer.parseInt(request.getParameter("c_Id"));   
+        documento=Integer.parseInt(request.getParameter("c_numerodocumento"));
+        tipo=request.getParameter("c_tipo");
+        fecha_salida=request.getParameter("c_fechsal");
+        fecha_ingreso=request.getParameter("c_fechingre");
+        hora_Salida=request.getParameter("c_horasal");
+        hora_ingreso=request.getParameter("c_horaingre");
+        fecha_ingresoReal=request.getParameter("c_fireal");
+        hora_ingresoReal=request.getParameter("c_hireal");
+        fecha_salidaReal=request.getParameter("c_fsreal");
+        hora_salidaReal=request.getParameter("c_hsreal");
+        observacion_permiso_llegada=request.getParameter("c_obser");
+        motivo=request.getParameter("c_moti");
+        estado=request.getParameter("c_estado");
+        autoriza=request.getParameter("c_autoriza");
         
-        String evidenciaAdjunta="";
-        
-        Part fot =request.getPart("t_evidenciaAdjunta");
-        String nomfoto=fot.getSubmittedFileName();
-
-        int i = nomfoto.lastIndexOf("\\");
-        nomfoto = nomfoto.substring(i+1);
-        String nombre=documento+"_"+nomfoto;
-        String Url="C:\\Users\\Stefany\\Documents\\NetBeansProjects\\Bienesoft1.0\\web\\img\\"+nombre;
-        evidenciaAdjunta="img/"+nombre;
-        InputStream file=fot.getInputStream();
-        File f=new File(Url);
-        FileOutputStream sal = new FileOutputStream(f);
-        int num=file.read();
-        while(num != -1){
-            sal.write(num);
-            num=file.read();
-        }
-            
+          
         permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
         crudPermisos crud = new crudPermisos();
         crud.actualizar_permiso(setget);
@@ -288,35 +253,15 @@ public class ServletPermiso extends HttpServlet {
         estado=request.getParameter("t_estado");
         autoriza=request.getParameter("t_autoriza");
             
-            String evidenciaAdjunta="";
             
-            Part fot =request.getPart("t_evidenciaAdjunta");
-            String nomfoto=fot.getSubmittedFileName();
-            if(!nomfoto.equals("")) {
-                int i = nomfoto.lastIndexOf("\\");
-                nomfoto = nomfoto.substring(i+1);
-                String nombre=documento+"_"+nomfoto;
-                String Url="C:\\Users\\Stefany\\Documents\\NetBeansProjects\\Bienesoft1.0\\web\\img\\"+nombre;
-                evidenciaAdjunta="img/"+nombre;
-                InputStream file=fot.getInputStream();
-                File f=new File(Url);
-                FileOutputStream sal = new FileOutputStream(f);
-                int num=file.read();
-                while(num != -1){
-                    sal.write(num);
-                    num=file.read();
-                }
-            }else {
-                evidenciaAdjunta = request.getParameter("Evide");
-            }
            
             
-            permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
-            crudPermisos crud = new crudPermisos();
-            crud.eliminar_permiso(setget);
-            response.sendRedirect("t_permiso.jsp");
+        permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
+        crudPermisos crud = new crudPermisos();
+        crud.eliminar_permiso(setget);
+        response.sendRedirect("t_permiso_coordinador.jsp");
         
-        }
+    }
         
         
         //ELIMINAR VISTA COORDIADOR
@@ -325,51 +270,29 @@ public class ServletPermiso extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        Id=Integer.parseInt(request.getParameter("t_Id"));
-        documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
-        tipo=request.getParameter("tipoper");
-        fecha_salida=request.getParameter("t_fechsal");
-        fecha_ingreso=request.getParameter("t_fechingre");
-        hora_Salida=request.getParameter("t_horasal");
-        hora_ingreso=request.getParameter("t_horaingre");
-        fecha_ingresoReal=request.getParameter("f_fireal");
-        hora_ingresoReal=request.getParameter("f_hireal");
-        fecha_salidaReal=request.getParameter("f_fsreal");
-        hora_salidaReal=request.getParameter("f_hsreal");
-        observacion_permiso_llegada=request.getParameter("t_obser");
-        motivo=request.getParameter("t_moti");
-        estado=request.getParameter("t_estado");
-        autoriza=request.getParameter("t_autoriza");
+        Id=Integer.parseInt(request.getParameter("c_Id"));   
+        documento=Integer.parseInt(request.getParameter("c_numerodocumento"));
+        tipo=request.getParameter("c_tipo");
+        fecha_salida=request.getParameter("c_fechsal");
+        fecha_ingreso=request.getParameter("c_fechingre");
+        hora_Salida=request.getParameter("c_horasal");
+        hora_ingreso=request.getParameter("c_horaingre");
+        fecha_ingresoReal=request.getParameter("c_fireal");
+        hora_ingresoReal=request.getParameter("c_hireal");
+        fecha_salidaReal=request.getParameter("c_fsreal");
+        hora_salidaReal=request.getParameter("c_hsreal");
+        observacion_permiso_llegada=request.getParameter("c_obser");
+        motivo=request.getParameter("c_moti");
+        estado=request.getParameter("c_estado");
+        autoriza=request.getParameter("c_autoriza");
             
-            String evidenciaAdjunta="";
-            
-            Part fot =request.getPart("t_evidenciaAdjunta");
-            String nomfoto=fot.getSubmittedFileName();
-            if(!nomfoto.equals("")) {
-                int i = nomfoto.lastIndexOf("\\");
-                nomfoto = nomfoto.substring(i+1);
-                String nombre=documento+"_"+nomfoto;
-                String Url="C:\\Users\\Stefany\\Documents\\NetBeansProjects\\Bienesoft1.0\\web\\img\\"+nombre;
-                evidenciaAdjunta="img/"+nombre;
-                InputStream file=fot.getInputStream();
-                File f=new File(Url);
-                FileOutputStream sal = new FileOutputStream(f);
-                int num=file.read();
-                while(num != -1){
-                    sal.write(num);
-                    num=file.read();
-                }
-            }else {
-                evidenciaAdjunta = request.getParameter("Evide");
-            }
-           
-            
-            permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
-            crudPermisos crud = new crudPermisos();
-            crud.eliminar_permiso(setget);
-            response.sendRedirect("t_permiso_coordinador.jsp");
+ 
+        permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
+        crudPermisos crud = new crudPermisos();
+        crud.eliminar_permiso(setget);
+        response.sendRedirect("t_permiso_coordinador.jsp");
         
-        }
+    }
     
         
     
@@ -457,8 +380,9 @@ public class ServletPermiso extends HttpServlet {
             
             //RESTRICCIONES GENERALES DE HORARIOS
             if(verifica){
-                JOptionPane.showMessageDialog(null,setget.getPer_tipo());
+                //JOptionPane.showMessageDialog(null,setget.getPer_tipo());
                 if(setget.getPer_tipo().equals("semana morning") || setget.getPer_tipo().equals("semana tarde") ){
+                    //PERMISO DE SEMANA
                     boolean autorizado = tipoper.metodo_semana(horaReal,setget.getPer_tipo());//horareal y tipopermiso
                     if(autorizado) {
                         JOptionPane.showMessageDialog(null, "Puede salir");
@@ -471,8 +395,13 @@ public class ServletPermiso extends HttpServlet {
                         JOptionPane.showMessageDialog(null, "No puede salir");
                     }
                 }else if(setget.getPer_tipo().equals("fin de semana")){
-                    //tipoper.metodo_finsemana(fechaReal, horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                    //PERMISO DE FIN DE SEMANA
+                    boolean autorizado=tipoper.metodo_finsemana(fechaReal, horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                    if(autorizado) {
+                        JOptionPane.showMessageDialog(null, "Puede salir a fin de semana");
+                        
                     
+                    }
                     
                 }
             }
