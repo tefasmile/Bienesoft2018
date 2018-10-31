@@ -14,7 +14,7 @@
     <body>
         <table>
             <tr bgcolor="#A9CCE3" border="1">
-                <th colspan="9" class="center">Tabla permisos</th>
+                <th colspan="9" class="center">Tabla permisos VISTA COORDINADOR</th>
             </tr>
             <tr bgcolor="skyblue">
                 <th>ID</th>

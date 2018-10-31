@@ -51,8 +51,11 @@ public class Autorizacion {
     public boolean AutorizaSeguridad(String estado){
         if(estado.equals("Autorizado")){
             return true;        
-        }        
+        }else if(estado.equals("Denegado")){
+            return false;
+        }
         return false;
+        
     }
 
     
