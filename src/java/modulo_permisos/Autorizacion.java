@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import modelo.permisoSG;
 
@@ -105,6 +106,17 @@ public class Autorizacion {
             JOptionPane.showMessageDialog(null,HEap[1]);
         }
         
+        
+        //fecha
+        if(Integer.parseInt(FEap[2]) <= 9){
+            FEap[2] = FEap[2].substring(1);
+            JOptionPane.showMessageDialog(null,"Día: "+FEap[2]);
+        }
+        if(Integer.parseInt(FEap[1]) <= 9){
+            FEap[1] = FEap[1].substring(1);
+            JOptionPane.showMessageDialog(null,FEap[1]);
+        }
+        
         JOptionPane.showMessageDialog(null,"Fecha real: "+FR[0]+"-"+FR[1]+"-"+FR[2]);
         JOptionPane.showMessageDialog(null,"Fecha estipulada: "+FEap[0]+"-"+FEap[1]+"-"+FEap[2]);
         
@@ -112,11 +124,16 @@ public class Autorizacion {
         JOptionPane.showMessageDialog(null,"Hora estipulada: "+HEap[0]+":"+HEap[1]);
 
         
-        if(FR[0].equals(FEap[0]) && FR[1].equals(FEap[1]) && FR[2].equals(FEap[2])) { 
+        if(FR[0].equals(FEap[0]) && FR[1].equals(FEap[1]) && FR[2].equals(FEap[2])  ) { 
             
-            if( HR[0].equals(HEap[0]) && Integer.parseInt(HR[1]) <= (Integer.parseInt(HEap[1]) + 10)) {//mas los 10 minutos
-                JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
-                return true;
+            if( Integer.parseInt(HR[0]) ==  Integer.parseInt(HEap[0])) {//mas los 10 minutos
+                if(Integer.parseInt(HR[1]) <= Integer.parseInt(HEap[1]) + 10) {
+                    JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
+                    return true;
+                }
+            } else if(Integer.parseInt(HR[0]) <  Integer.parseInt(HEap[0])) {
+                    JOptionPane.showMessageDialog(null,"Fecha y hora estipulada correcta");
+                    return true;
             }
             JOptionPane.showMessageDialog(null,"La hora no coincide con la estipulada por el aprendiz");
             
@@ -128,23 +145,58 @@ public class Autorizacion {
     }
     
     
+    
+    
+    
+    
     //METODO PERMISO CON DIAS FESTIVOS
-    public boolean diasFestivos(){
+//    public boolean diasFestivos(){
         
         //TRABAJO CON FECHA Y HORA PARA FIN DE SEMANA
-        int year, easterMonth, easterDay;
-        ArrayList<String> vacaciones = new ArrayList<String>();
+//        int year, easterMonth, easterDay, month, day;
+//        ArrayList<String> vacaciones = new ArrayList<String>();
+        
+//        Calendar date = Calendar.getInstance();
+        //date.set(this.year, month, day);
+//        int dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
+//        switch (dayOfWeek) {
+//        case 1:
+//                date.add(Calendar.DATE, 1);
+//                break;
+//        case 3:
+//                date.add(Calendar.DATE, 6);
+//                break;
+//        case 4:
+//                date.add(Calendar.DATE, 5);
+//                break;
+//        case 5:
+//                date.add(Calendar.DATE, 4);
+//                break;
+//        case 6:
+//                date.add(Calendar.DATE, 3);
+//                break;
+//        case 7:
+//                date.add(Calendar.DATE, 2);
+//                break;
+//        }
+//        this.vacaciones.add(date.get(Calendar.MONTH) + ":" + date.get(Calendar.DATE));
+        
+        
+        
         //DIAS DE FIESTA
-        this.vacaciones = new ArrayList<String>();
-        this.vacaciones.add("0:1");// Primero de Enero
-	this.vacaciones.add("4:1");// Dia del trabajo 1 de mayo
-	this.vacaciones.add("6:20");//Independencia 20 de Julio
-	this.vacaciones.add("7:7");//Batalla de boyaca 7 de agosto
-	this.vacaciones.add("11:8");//Maria inmaculada 8 de diciembre
-	this.vacaciones.add("11:25");//Navidad 25 de diciembre
-    
-        return false;
-    }
+//        this.vacaciones = new ArrayList<String>();
+//        this.vacaciones.add("0:1");// Primero de Enero
+//        this.vacaciones.add("0:6");// Reyes magos 6 de enero
+//	this.vacaciones.add("4:1");// Dia del trabajo 1 de mayo
+//	this.vacaciones.add("6:20");//Independencia 20 de Julio
+//	this.vacaciones.add("7:7");//Batalla de boyaca 7 de agosto
+//	this.vacaciones.add("11:8");//Maria inmaculada 8 de diciembre
+//	this.vacaciones.add("11:25");//Navidad 25 de diciembre
+        
+       
+//    
+//        return false;
+    //}
     
     
     

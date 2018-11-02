@@ -41,9 +41,6 @@
                 <input type="submit" name="btn-guardar" value="Guardar">
                 
                
-                    
-               
-                <!--<input type="submit" name="btn-permiso" value="btn_permiso">-->
                
                     
             </form>
@@ -52,15 +49,7 @@
         </div>
                 
                 
-                <!--MODULO PARA LLAMAR METODO DE UNA CLASE-->
-                
-                <!--<form action="ServletPrueba" method="post">
-                    
-                    <div>
-                        <input type="submit" name="btn-permiso" value="btn_permiso">
-                    </div>
-                    
-                </form>-->
+               
                 
     </body>
 </html>

@@ -205,21 +205,21 @@ public class ServletPermiso extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        Id=Integer.parseInt(request.getParameter("c_Id"));   
-        documento=Integer.parseInt(request.getParameter("c_numerodocumento"));
-        tipo=request.getParameter("c_tipo");
-        fecha_salida=request.getParameter("c_fechsal");
-        fecha_ingreso=request.getParameter("c_fechingre");
-        hora_Salida=request.getParameter("c_horasal");
-        hora_ingreso=request.getParameter("c_horaingre");
-        fecha_ingresoReal=request.getParameter("c_fireal");
-        hora_ingresoReal=request.getParameter("c_hireal");
-        fecha_salidaReal=request.getParameter("c_fsreal");
-        hora_salidaReal=request.getParameter("c_hsreal");
-        observacion_permiso_llegada=request.getParameter("c_obser");
-        motivo=request.getParameter("c_moti");
-        estado=request.getParameter("c_estado");
-        autoriza=request.getParameter("c_autoriza");
+        Id=Integer.parseInt(request.getParameter("t_Id"));
+        documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
+        tipo=request.getParameter("t_tipo");
+        fecha_salida=request.getParameter("t_fechsal");
+        fecha_ingreso=request.getParameter("t_fechingre");
+        hora_Salida=request.getParameter("t_horasal");
+        hora_ingreso=request.getParameter("t_horaingre");
+        fecha_ingresoReal=request.getParameter("t_fireal");
+        hora_ingresoReal=request.getParameter("t_hireal");
+        fecha_salidaReal=request.getParameter("t_fsreal");
+        hora_salidaReal=request.getParameter("t_hsreal");
+        observacion_permiso_llegada=request.getParameter("t_obser");
+        motivo=request.getParameter("t_moti");
+        estado=request.getParameter("t_estado");
+        autoriza=request.getParameter("t_autoriza");
         
           
         permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
@@ -270,21 +270,21 @@ public class ServletPermiso extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        Id=Integer.parseInt(request.getParameter("c_Id"));   
-        documento=Integer.parseInt(request.getParameter("c_numerodocumento"));
-        tipo=request.getParameter("c_tipo");
-        fecha_salida=request.getParameter("c_fechsal");
-        fecha_ingreso=request.getParameter("c_fechingre");
-        hora_Salida=request.getParameter("c_horasal");
-        hora_ingreso=request.getParameter("c_horaingre");
-        fecha_ingresoReal=request.getParameter("c_fireal");
-        hora_ingresoReal=request.getParameter("c_hireal");
-        fecha_salidaReal=request.getParameter("c_fsreal");
-        hora_salidaReal=request.getParameter("c_hsreal");
-        observacion_permiso_llegada=request.getParameter("c_obser");
-        motivo=request.getParameter("c_moti");
-        estado=request.getParameter("c_estado");
-        autoriza=request.getParameter("c_autoriza");
+        Id=Integer.parseInt(request.getParameter("t_Id"));
+        documento=Integer.parseInt(request.getParameter("t_numerodocumento"));
+        tipo=request.getParameter("t_tipo");
+        fecha_salida=request.getParameter("t_fechsal");
+        fecha_ingreso=request.getParameter("t_fechingre");
+        hora_Salida=request.getParameter("t_horasal");
+        hora_ingreso=request.getParameter("t_horaingre");
+        fecha_ingresoReal=request.getParameter("t_fireal");
+        hora_ingresoReal=request.getParameter("t_hireal");
+        fecha_salidaReal=request.getParameter("t_fsreal");
+        hora_salidaReal=request.getParameter("t_hsreal");
+        observacion_permiso_llegada=request.getParameter("t_obser");
+        motivo=request.getParameter("t_moti");
+        estado=request.getParameter("t_estado");
+        autoriza=request.getParameter("t_autoriza");
             
  
         permisoSG setget = new permisoSG( Id,documento, tipo, fecha_salida, fecha_ingreso, hora_Salida, hora_ingreso, fecha_ingresoReal,hora_ingresoReal, fecha_salidaReal, hora_salidaReal ,observacion_permiso_llegada, motivo, estado, autoriza, evidenciaAdjunta);
@@ -330,12 +330,15 @@ public class ServletPermiso extends HttpServlet {
             //LLAMAR MÉTODO PARA DETERMINAR SI ES UN INGRESO O UNA SALIDA
             //PERMISO ENTRADA y SALIDA
             Calendar calendario = Calendar.getInstance();
-            int hora, minutos, segundos, dia, mes, ano;
+            int hora, minutos, segundos, dia, mes, ano, diasemana;
             
             //FECHA REAL DE SALIDA/INGRESO
             dia = calendario.get(Calendar.DATE);
             mes = calendario.get(Calendar.MONTH);
             ano = calendario.get(Calendar.YEAR);
+            diasemana = calendario.get(Calendar.DAY_OF_WEEK);
+            
+            JOptionPane.showMessageDialog(null,"Hoy es: "+diasemana );
             
             if(dia <= 9){
                 dia = Integer.parseInt("0"+dia);
@@ -345,6 +348,7 @@ public class ServletPermiso extends HttpServlet {
             }
             
             String fechaReal = ano+"-"+(mes+1)+"-"+dia;
+            
             
             //HORA REAL DE SALIDA/INGRESO
             hora =calendario.get(Calendar.HOUR_OF_DAY);
@@ -357,6 +361,8 @@ public class ServletPermiso extends HttpServlet {
             permisoSG pser = new permisoSG(fecha_ingresoReal, hora_ingresoReal, fecha_salidaReal, hora_salidaReal);//REAL
             ArrayList<permisoSG> persalent=new  ArrayList<>();
             String EntradaSalida =autorz.PermisoSalidaEntrada(setget); //Se guarda "Ingreso" o "Salida"
+            
+            JOptionPane.showMessageDialog(null, "esta es la fecha real: " + fechaReal);
             
             //Fecha y hora estipuladas por aprendiz
             String fechaEstipulada="", horaEstipulada="", campo1="",campo2="";
@@ -372,6 +378,9 @@ public class ServletPermiso extends HttpServlet {
                 horaEstipulada = setget.getPer_hora_ingreso();
                 campo1 = "per_fecha_ingresoReal";
                 campo2 = "per_hora_ingresoReal"; 
+            } else {
+                JOptionPane.showMessageDialog(null, "EL PERMISO YA HA TERMINADO");
+                //redireccion de vista guarda
             }
             
             
@@ -396,7 +405,7 @@ public class ServletPermiso extends HttpServlet {
                     }
                 }else if(setget.getPer_tipo().equals("fin de semana")){
                     //PERMISO DE FIN DE SEMANA
-                    boolean autorizado=tipoper.metodo_finsemana(fechaReal, horaReal,setget.getPer_tipo());//horareal y tipopermiso
+                    boolean autorizado=tipoper.metodo_finsemana(fechaReal, horaReal);//fechareal y horareal
                     if(autorizado) {
                         JOptionPane.showMessageDialog(null, "Puede salir a fin de semana");
                         

@@ -90,9 +90,6 @@ public final class f_005fpermiso_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                <input type=\"submit\" name=\"btn-guardar\" value=\"Guardar\">\r\n");
       out.write("                \r\n");
       out.write("               \r\n");
-      out.write("                    \r\n");
-      out.write("               \r\n");
-      out.write("                <!--<input type=\"submit\" name=\"btn-permiso\" value=\"btn_permiso\">-->\r\n");
       out.write("               \r\n");
       out.write("                    \r\n");
       out.write("            </form>\r\n");
@@ -101,15 +98,7 @@ public final class f_005fpermiso_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        </div>\r\n");
       out.write("                \r\n");
       out.write("                \r\n");
-      out.write("                <!--MODULO PARA LLAMAR METODO DE UNA CLASE-->\r\n");
-      out.write("                \r\n");
-      out.write("                <!--<form action=\"ServletPrueba\" method=\"post\">\r\n");
-      out.write("                    \r\n");
-      out.write("                    <div>\r\n");
-      out.write("                        <input type=\"submit\" name=\"btn-permiso\" value=\"btn_permiso\">\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                    \r\n");
-      out.write("                </form>-->\r\n");
+      out.write("               \r\n");
       out.write("                \r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");

@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>
-            Permisos
+            Permisos para coordinador
         </title>
     </head>
     <body>
@@ -47,23 +47,23 @@
             
             <form action="ServletPermiso" enctype="multipart/form-data" method="post">
                 <tr>
-                <td><input readonly type="number" name="c_Id" value="<%=x.getPer_ID()%>"></td>
-                <td><input readonly type="number" name="c_numerodocumento" value="<%=x.getPer_Aprendiz_Apr_documento()%>"></td>
-                <td><input readonly type="text" name="c_tipo" value="<%=x.getPer_tipo()%>"></td>
-                <td><input readonly type="date" name="c_fechsal" value="<%=x.getPer_fecha_salida()%>"></td>
-                <td><input readonly type="date" name="c_fechingre" value="<%=x.getPer_fecha_ingreso()%>"></td>
-                <td><input readonly type="time" name="c_horasal" value="<%=x.getPer_hora_Salida()%>"></td>
-                <td><input readonly type="time" name="c_horaingre" value="<%=x.getPer_hora_ingreso()%>"></td>
-                <td><input readonly type="date" name="c_freal" value="<%=x.getPer_fecha_ingresoReal()%>"></td>
-                <td><input readonly type="time" name="c_hreal" value="<%=x.getPer_fecha_ingreso()%>"></td>
-                <td><input readonly type="date" name="c_fsreal" value="<%=x.getPer_hora_Salida()%>"></td>
-                <td><input readonly type="time" name="c_hsreal" value="<%=x.getPer_hora_salidaReal()%>"></td>
-                <td><input readonly type="text" name="c_obser" value="<%=x.getPer_observacion_permiso_llegada()%>"></td>
-                <td><input readonly type="text" name="c_moti" value="<%=x.getPer_motivo()%>"></td>
-                <td><input type="text" name="c_estado" value="<%=x.getPer_estado()%>"></td>
-                <td><input type="text" name="c_autoriza" value="<%=x.getPer_autoriza()%>"></td> 
-                <th><img src="<%=x.getPer_evidenciaAdjunta()%>" name="c_evidenciaAdjunta" width="60" height="60"/></th>
-                <td style="display: none;"><input type="text" name="c_evidenciaAdjunta" value="<%=x.getPer_evidenciaAdjunta()%>"></td>
+                <td><input readonly type="number" name="t_Id" value="<%=x.getPer_ID()%>"></td>
+                <td><input readonly type="number" name="t_numerodocumento" value="<%=x.getPer_Aprendiz_Apr_documento()%>"></td>
+                <td><input readonly type="text" name="t_tipo" value="<%=x.getPer_tipo()%>"></td>
+                <td><input readonly type="date" name="t_fechsal" value="<%=x.getPer_fecha_salida()%>"></td>
+                <td><input readonly type="date" name="t_fechingre" value="<%=x.getPer_fecha_ingreso()%>"></td>
+                <td><input readonly type="time" name="t_horasal" value="<%=x.getPer_hora_Salida()%>"></td>
+                <td><input readonly type="time" name="t_horaingre" value="<%=x.getPer_hora_ingreso()%>"></td>
+                <td><input readonly type="date" name="t_freal" value="<%=x.getPer_fecha_ingresoReal()%>"></td>
+                <td><input readonly type="time" name="t_hreal" value="<%=x.getPer_fecha_ingreso()%>"></td>
+                <td><input readonly type="date" name="t_fsreal" value="<%=x.getPer_hora_Salida()%>"></td>
+                <td><input readonly type="time" name="t_hsreal" value="<%=x.getPer_hora_salidaReal()%>"></td>
+                <td><input readonly type="text" name="t_obser" value="<%=x.getPer_observacion_permiso_llegada()%>"></td>
+                <td><input readonly type="text" name="t_moti" value="<%=x.getPer_motivo()%>"></td>
+                <td><input type="text" name="t_estado" value="<%=x.getPer_estado()%>"></td>
+                <td><input type="text" name="t_autoriza" value="<%=x.getPer_autoriza()%>"></td> 
+                <th><img src="<%=x.getPer_evidenciaAdjunta()%>" name="t_evidenciaAdjunta" width="60" height="60"/></th>
+                <td style="display: none;"><input type="text" name="t_evidenciaAdjunta" value="<%=x.getPer_evidenciaAdjunta()%>"></td>
                 
 
                 <td><input type="submit" name="btn-coordupdate" value="Actualizar"></td>

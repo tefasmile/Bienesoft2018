@@ -70,7 +70,7 @@ public class tipopermiso {
     
     
     //METODO FIN DE SEMANA
-    public boolean metodo_finsemana(String fechaReal, String horaReal, String tipoPermiso){
+    public boolean metodo_finsemana(String fechaReal, String horaReal){
         
         JOptionPane.showMessageDialog(null,"metodo fin de semana, ENTRO A metodo FIN DE SEMANA");
         

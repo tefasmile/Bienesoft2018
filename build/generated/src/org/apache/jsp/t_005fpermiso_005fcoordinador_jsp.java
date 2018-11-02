@@ -54,13 +54,13 @@ public final class t_005fpermiso_005fcoordinador_jsp extends org.apache.jasper.r
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>\n");
-      out.write("            Permisos\n");
+      out.write("            Permisos para coordinador\n");
       out.write("        </title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <table>\n");
       out.write("            <tr bgcolor=\"#A9CCE3\" border=\"1\">\n");
-      out.write("                <th colspan=\"9\" class=\"center\">Tabla permisos</th>\n");
+      out.write("                <th colspan=\"9\" class=\"center\">Tabla permisos VISTA COORDINADOR</th>\n");
       out.write("            </tr>\n");
       out.write("            <tr bgcolor=\"skyblue\">\n");
       out.write("                <th>ID</th>\n");
@@ -142,8 +142,8 @@ public final class t_005fpermiso_005fcoordinador_jsp extends org.apache.jasper.r
       out.write("\"></td> \n");
       out.write("                <th><img src=\"");
       out.print(x.getPer_evidenciaAdjunta());
-      out.write("\" width=\"60\" height=\"60\"/></th>\n");
-      out.write("                <td style=\"display: none;\"><input type=\"text\" value=\"");
+      out.write("\" name=\"t_evidenciaAdjunta\" width=\"60\" height=\"60\"/></th>\n");
+      out.write("                <td style=\"display: none;\"><input type=\"text\" name=\"t_evidenciaAdjunta\" value=\"");
       out.print(x.getPer_evidenciaAdjunta());
       out.write("\"></td>\n");
       out.write("                \n");
