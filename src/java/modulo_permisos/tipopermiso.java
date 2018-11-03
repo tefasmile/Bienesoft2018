@@ -36,8 +36,8 @@ public class tipopermiso {
         int minutos = Integer.parseInt(horario[1]);
         
         if(tipoPermiso.equals("semana morning")){
-            if( (hora >= 8 && hora < 12)) return true;
-            if(hora==12 && minutos <= 10) return true;
+            if( (hora >= 8 && hora < 11)) return true;
+            if(hora==11 && minutos <= 10) return true;
         } else if(tipoPermiso.equals("semana tarde")) {
             if( (hora >= 14 && hora < 17)) return true;
             if(hora==17 && minutos <= 10) return true;
@@ -79,8 +79,18 @@ public class tipopermiso {
         int minutos = Integer.parseInt(horario[1]);
         
         
-        
+        this.vacaciones = new ArrayList<String>();
+        this.vacaciones.add("0:1");// Primero de Enero
+        this.vacaciones.add("0:6");// Reyes magos 6 de enero
+	this.vacaciones.add("4:1");// Dia del trabajo 1 de mayo
+	this.vacaciones.add("6:20");//Independencia 20 de Julio
+	this.vacaciones.add("7:7");//Batalla de boyaca 7 de agosto
+	this.vacaciones.add("11:8");//Maria inmaculada 8 de diciembre
+	this.vacaciones.add("11:25");//Navidad 25 de diciembre
 	
+        
+        // Tenemos un array de 4x4 elementos.
+	int array[][] = { {0,0,4,6,7,11,11}, {1,6,1,20,7,8,25}};
         
         return true;
         
